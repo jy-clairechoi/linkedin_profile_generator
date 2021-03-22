@@ -1,0 +1,10 @@
+.photo {
+  height: 70px;
+  width: 70px;
+}
+
+.navbar,
+.navbar-default {
+    background-color: rgb(104,34,139);
+    /* rgb(130,11,187); */
+}

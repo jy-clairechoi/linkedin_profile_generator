@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js">
+    api_key: XXXXXXXXXXXXXXXXX
+    authorize: true
+    onLoad: onLinkedInLoad
+</script>
+
+<script type="text/javascript">
+
+    // Setup an event listener to make an API call once auth is complete
+    function onLinkedInLoad() {
+        IN.Event.on(IN, "auth", getProfileData);
+        // IN.Event.on(IN, "auth", onLinkedInAuth);
+    }
+
+    // Handle the successful return from the API call
+    function onSuccess(data) {
+        console.log("onSuccess() " + data);
+        console.log(data);
+    }
+
+    // Handle an error response from the API call
+    function onError(error) {
+        console.log("onError() " + JSON.stringify(error));
+        console.log(error);
+    }
+
+    // Use the API call wrapper to request the member's basic profile data
+    function getProfileData() {
+        console.log(IN.User.isAuthorized());
+        IN.API.Raw("/people/~").result(onSuccess).error(onError);
+    }
+
+</script>
+
+<script type="in/Login">
+    Welcome, <?js= firstName ?> <?js= lastName ?>.
+</script>
+</head>
+<body>
+
+</body>
+</html>
